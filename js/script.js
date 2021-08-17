@@ -17,7 +17,7 @@ buttons.addEventListener('click', function (event) {
     }
     // if clicked value is 'C'
     else if (clicked == 'c') {
-      outputField.innerText = '';
+      outputField.innerText = 0;
     }
     // if clicked value is '='
     else if (clicked == '=') {
@@ -41,5 +41,6 @@ buttons.addEventListener('click', function (event) {
   } catch (err) {
     // throw error
     alert('Invalid operation');
+    outputField.innerText = 0;
   }
 });
