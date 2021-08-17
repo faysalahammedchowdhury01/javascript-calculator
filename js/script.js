@@ -8,22 +8,22 @@ buttons.addEventListener('click', function (event) {
 
   try {
     // if started with 'NOT A NUMBER'
-    if (outputField.innerText == '' && isNaN(clicked)) {
+    if (outputField.value == '' && isNaN(clicked)) {
       alert('Click a number first');
     }
     // if clicked value is 'DEL'
     else if (clicked == 'DEL') {
-      outputField.innerText = outputField.innerText.slice(0, -1);
+      outputField.value = outputField.value.slice(0, -1);
     }
     // if clicked value is 'C'
     else if (clicked == 'c') {
-      outputField.innerText = 0;
+      outputField.value = '';
     }
     // if clicked value is '='
     else if (clicked == '=') {
       // replace '÷' and '×' operator
       const replace = { '×': '*', '÷': '/' };
-      const totalText = outputField.innerText.replace(
+      const totalText = outputField.value.replace(
         /\b(?:×|÷)\b/gi,
         (matched) => replace[matched]
       );
@@ -32,15 +32,15 @@ buttons.addEventListener('click', function (event) {
       if (Math.round(result) != result) {
         result = result.toFixed(2);
       }
-      outputField.innerText = result;
+      outputField.value = result;
     }
     // if clicked value is 'NUMBER OR OPERATOR'
     else {
-      outputField.innerText += clicked;
+      outputField.value += clicked;
     }
   } catch (err) {
     // throw error
     alert('Invalid operation');
-    outputField.innerText = 0;
+    outputField.value = '';
   }
 });
