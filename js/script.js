@@ -28,16 +28,20 @@ function displayClickedButton(event) {
 }
 
 function makeResult() {
-  // replace '÷' and '×' operator
-  const replace = { '×': '*', '÷': '/' };
-  const totalText = outputField.value.replaceAll(
-    /\b(?:×|÷)\b/gi,
-    (matched) => replace[matched]
-  );
-  let result = eval(totalText);
-  // to fixed when needed
-  if (Math.round(result) != result) {
-    result = result.toFixed(2);
+  try {
+    // replace '÷' and '×' operator
+    const replace = { '×': '*', '÷': '/' };
+    const totalText = outputField.value.replaceAll(
+      /\b(?:×|÷)\b/gi,
+      (matched) => replace[matched]
+    );
+    let result = eval(totalText);
+    // to fixed when needed
+    if (Math.round(result) != result) {
+      result = result.toFixed(2);
+    }
+    outputField.value = result;
+  } catch (error) {
+    alert('Invalid Operation');
   }
-  outputField.value = result;
 }
